@@ -1,0 +1,37 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Ciber POC Suppy Chain Blockchain Logistics</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class=""><a [routerLink]="['/']">Home</a></li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Roles
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/roles/importer']">Importer</a></li>
+            <li><a [routerLink]="['/roles/grower']">Grower</a></li>
+            <li><a [routerLink]="['/roles/consumer']">Consumer</a></li>
+
+          </ul>
+        </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assets
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+
+          <li><a [routerLink]="['/ProductionLot']">ProductionLot</a></li>
+          
+          <li><a [routerLink]="['/Contract']">Contract</a></li>
+          
+          <li><a [routerLink]="['/Batch']">Batch</a></li>
+          
+          <li><a [routerLink]="['/Products']">Products</a></li>
+
+          <li><a (click)="setupTransaction()">SETUP TRANSACTIONS</a></li>
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,143 @@
+<div class="container">
+  <!-- <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    <strong>Error:</strong> {{errorMessage}}
+  </div> -->
+  <h1 id='assetName'>Importer</h1>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">Create Contract</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-responsive table-striped" *ngFor="let contract of contracts">
+        <thead class="thead">
+
+          <tr class="thead-cols">
+            <th class="info">Contract ID</th>
+            <th class="">CON_00{{contract.contractId}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Grower</th>
+            <th class="">{{contract.grower}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Shipper</th>
+            <th class="">{{contract.shipper}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Importer</th>
+            <th class="">{{contract.importer}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Estimated Time of Arrival</th>
+            <th class="">{{contract.arrivalDateTime}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Price per Unit</th>
+            <th class="">{{contract.unitPrice}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Minimal Tempature</th>
+            <th class="">{{contract.minTemperature}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Maximal Tempature</th>
+            <th class="">{{contract.maxTemperature}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Penalty Factor Minimal Tempature</th>
+            <th class="">{{contract.minPenaltyFactor}}</th>
+          </tr>
+          <tr class="thead-cols">
+            <th class="info">Penalty Factor Maximal Tempature</th>
+            <th class="">{{contract.maxPenaltyFactor}}</th>
+          </tr>
+          <!-- <tr class="thead-cols">
+            <th class="info">Actions</th>
+            <th class="">
+              <button (click)="getForm(contract.contractId);" type="button" class="btn btn-success" data-toggle="modal" data-target="#updateAssetModal">Update Contract</button>
+              <button (click)="setId(contract.contractId);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssetModal">Delete Contract</button>
+            </th>
+          </tr> -->
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>
+
+<owl-date-time [pickerMode]="'dialog'" #dt></owl-date-time>
+
+<div class="modal fade" id="addAssetModal" tabindex="-1" role="dialog" aria-labelledby="addAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="addAssetModalLabel">Add Asset</h4>
+      </div>
+
+      <form [formGroup]="myForm" (ngSubmit)="createContract($event)">
+        <div class="modal-body">
+
+          <div class="form-group text-left">
+            <label for="contractId"> Contract ID</label>
+            <input formControlName="contractId" type="text" class="form-control" [value]="lastContractId" placeholder="CON_00{{lastContractId}}" ngModel disabled>
+          </div>
+
+          <div class="form-group text-left">
+            <label for="grower">Grower</label>
+            <select formControlName="grower" name="grower" class="form-control" *ngFor="let grower of growers">
+                <option [value]="grower.name">{{grower.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group text-left">
+            <label for="shipper">Shipper</label>
+            <select formControlName="shipper" name="shipper" class="form-control"  *ngFor="let shipper of shippers">
+                <option [value]="shipper.name">{{shipper.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group text-left">
+            <label for="arrivalDateTime">Estimated Time of Arrival</label>
+            <input formControlName="arrivalDateTime" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" class="form-control">
+          </div>
+
+
+          <div class="form-group text-left">
+            <label for="unitPrice">Price per Unit</label>
+            <input formControlName="unitPrice" type="number" step='any' min="0" max="20" step="0.1" value="0" class="form-control">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="minTemperature">Minimal Tempature</label>
+            <input formControlName="minTemperature" type="number" step='any' min="0" max="20" step="0.1" value="0" class="form-control">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="maxTemperature">Maximal Tempature</label>
+            <input formControlName="maxTemperature" type="number" step='any' min="0" max="20" step="0.1" value="0" class="form-control">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="minPenaltyFactor">Penalty Factor Minimal Tempature</label>
+            <input formControlName="minPenaltyFactor" type="number" step='any' min="0" max="20" step="0.1" value="0" class="form-control">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="maxPenaltyFactor">Penalty Factor Maximal Tempature</label>
+            <input formControlName="maxPenaltyFactor" type="number" step='any' min="0" max="20" step="0.1" value="0" class="form-control">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="createContract(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Create Contract</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

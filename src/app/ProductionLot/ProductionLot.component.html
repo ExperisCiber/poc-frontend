@@ -1,0 +1,606 @@
+<div class="modal fade" id="addAssetModal" tabindex="-1" role="dialog" aria-labelledby="addAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addAssetModalLabel">Add Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+
+            
+              <div class="form-group text-left">
+                <label for="grower">grower</label>
+                
+                    <textarea formControlName="grower" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="importer">importer</label>
+                
+                    <textarea formControlName="importer" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="productionLotId">productionLotId</label>
+                
+                  <input formControlName="productionLotId" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <label for="productType">productType</label>
+              <div class="checkbox">
+                
+                  <label>
+                    <input
+                      
+                        formControlName="productType"
+                      
+                      name="productType"
+                      value="BANANAS"
+                      type="radio"
+                      
+                    />
+                    BANANAS
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="productType"
+                      
+                      name="productType"
+                      value="APPLES"
+                      type="radio"
+                      
+                    />
+                    APPLES
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="productType"
+                      
+                      name="productType"
+                      value="PEARS"
+                      type="radio"
+                      
+                    />
+                    PEARS
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="productType"
+                      
+                      name="productType"
+                      value="PEACHES"
+                      type="radio"
+                      
+                    />
+                    PEACHES
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="productType"
+                      
+                      name="productType"
+                      value="COFFEE"
+                      type="radio"
+                      
+                    />
+                    COFFEE
+                  </label>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="expirationDate">expirationDate</label>
+                
+                  <input formControlName="expirationDate" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <label for="shipmentStatus">shipmentStatus</label>
+              <div class="checkbox">
+                
+                  <label>
+                    <input
+                      
+                        formControlName="shipmentStatus"
+                      
+                      name="shipmentStatus"
+                      value="CREATED"
+                      type="radio"
+                      
+                    />
+                    CREATED
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="shipmentStatus"
+                      
+                      name="shipmentStatus"
+                      value="IN_TRANSIT"
+                      type="radio"
+                      
+                    />
+                    IN_TRANSIT
+                  </label>
+                
+                  <label>
+                    <input
+                      
+                        formControlName="shipmentStatus"
+                      
+                      name="shipmentStatus"
+                      value="ARRIVED"
+                      type="radio"
+                      
+                    />
+                    ARRIVED
+                  </label>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="quantity">quantity</label>
+                
+                  <input formControlName="quantity" type="number" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="certificateGranted">certificateGranted</label>
+                
+                    <textarea formControlName="certificateGranted" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="clearanceGranted">clearanceGranted</label>
+                
+                    <textarea formControlName="clearanceGranted" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="temperatureReadings">temperatureReadings</label>
+                
+                    <textarea formControlName="temperatureReadings" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="contract">contract</label>
+                
+                    <textarea formControlName="contract" class="form-control" rows="3"></textarea>
+                
+              </div>
+            
+          
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="updateAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="updateAssetModalLabel">Update Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+            <div class="form-group text-left">
+              <label for="grower">grower</label>
+
+              
+                
+                  <textarea [ngModel]="grower" formControlName="grower" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="importer">importer</label>
+
+              
+                
+                  <textarea [ngModel]="importer" formControlName="importer" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="productionLotId">productionLotId</label>
+
+              
+                <input [ngModel]="productionLotId"formControlName="productionLotId" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="productType">productType</label>
+
+              
+                
+                  <div class="row">
+                    <div class="col-xs-12 checkbox">
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="productType"
+                            [ngModel]="productType"
+                          
+                          name="productType"
+                          value="BANANAS"
+                          type="radio"
+                          
+                        />
+                        BANANAS
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="productType"
+                            [ngModel]="productType"
+                          
+                          name="productType"
+                          value="APPLES"
+                          type="radio"
+                          
+                        />
+                        APPLES
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="productType"
+                            [ngModel]="productType"
+                          
+                          name="productType"
+                          value="PEARS"
+                          type="radio"
+                          
+                        />
+                        PEARS
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="productType"
+                            [ngModel]="productType"
+                          
+                          name="productType"
+                          value="PEACHES"
+                          type="radio"
+                          
+                        />
+                        PEACHES
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="productType"
+                            [ngModel]="productType"
+                          
+                          name="productType"
+                          value="COFFEE"
+                          type="radio"
+                          
+                        />
+                        COFFEE
+                      </label>
+                    
+                    </div>
+                  </div>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="expirationDate">expirationDate</label>
+
+              
+                <input [ngModel]="expirationDate"formControlName="expirationDate" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="shipmentStatus">shipmentStatus</label>
+
+              
+                
+                  <div class="row">
+                    <div class="col-xs-12 checkbox">
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="shipmentStatus"
+                            [ngModel]="shipmentStatus"
+                          
+                          name="shipmentStatus"
+                          value="CREATED"
+                          type="radio"
+                          
+                        />
+                        CREATED
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="shipmentStatus"
+                            [ngModel]="shipmentStatus"
+                          
+                          name="shipmentStatus"
+                          value="IN_TRANSIT"
+                          type="radio"
+                          
+                        />
+                        IN_TRANSIT
+                      </label>
+                    
+                      <label>
+                        <input
+                          
+                            formControlName="shipmentStatus"
+                            [ngModel]="shipmentStatus"
+                          
+                          name="shipmentStatus"
+                          value="ARRIVED"
+                          type="radio"
+                          
+                        />
+                        ARRIVED
+                      </label>
+                    
+                    </div>
+                  </div>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="quantity">quantity</label>
+
+              
+                <input [ngModel]="quantity" formControlName="quantity" type="number" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="certificateGranted">certificateGranted</label>
+
+              
+                
+                  <textarea [ngModel]="certificateGranted" formControlName="certificateGranted" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="clearanceGranted">clearanceGranted</label>
+
+              
+                
+                  <textarea [ngModel]="clearanceGranted" formControlName="clearanceGranted" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="temperatureReadings">temperatureReadings</label>
+
+              
+                
+                  <textarea [ngModel]="temperatureReadings" formControlName="temperatureReadings" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="contract">contract</label>
+
+              
+                
+                  <textarea [ngModel]="contract" formControlName="contract" class="form-control" rows="3"></textarea>
+                
+              
+
+            </div>
+          
+
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="updateAsset(myForm)" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteAssetModalLabel">Delete Asset</h4>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="deleteAsset()">
+        <div class="modal-body">
+          Are you sure you want to delete this asset?
+        </div>
+        <div class="modal-footer">
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		<strong>Error:</strong> {{errorMessage}}
+	</div>
+  <h1 id='assetName'>ProductionLot</h1>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">Add Asset</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-responsive table-striped">
+        <thead class="thead">
+          <tr class="thead-cols">
+            
+                <th class="info">grower</th>
+            
+                <th class="info">importer</th>
+            
+                <th class="info">productionLotId</th>
+            
+                <th class="info">productType</th>
+            
+                <th class="info">expirationDate</th>
+            
+                <th class="info">shipmentStatus</th>
+            
+                <th class="info">quantity</th>
+            
+                <th class="info">certificateGranted</th>
+            
+                <th class="info">clearanceGranted</th>
+            
+                <th class="info">temperatureReadings</th>
+            
+                <th class="info">contract</th>
+            
+              <th class="info">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of allAssets">
+
+            
+                <td>{{asset.grower}}</td>
+            
+                <td>{{asset.importer}}</td>
+            
+                <td>{{asset.productionLotId}}</td>
+            
+                <td>{{asset.productType}}</td>
+            
+                <td>{{asset.expirationDate}}</td>
+            
+                <td>{{asset.shipmentStatus}}</td>
+            
+                <td>{{asset.quantity}}</td>
+            
+                <td>{{asset.certificateGranted}}</td>
+            
+                <td>{{asset.clearanceGranted}}</td>
+            
+                <td>{{asset.temperatureReadings}}</td>
+            
+                <td>{{asset.contract}}</td>
+            
+            <td>
+              <button (click)="getForm(asset.productionLotId);" type="button" class="btn btn-success" data-toggle="modal" data-target="#updateAssetModal">Update Asset</button>
+
+              <button (click)="setId(asset.productionLotId);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssetModal">Delete Asset</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
